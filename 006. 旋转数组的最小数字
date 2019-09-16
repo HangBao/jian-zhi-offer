@@ -1,0 +1,29 @@
+# 方法一:暴力循环法
+class Solution:
+    def minNumberInRotateArray(self, rotateArray):
+        if rotateArray == [] :
+            return 0
+        result = rotateArray[0]
+        for i in range(1,len(rotateArray)):
+            if rotateArray[i] < result :
+                result = rotateArray[i]
+        return result
+        
+# 方法二:二分查找法:
+class Solution:
+    def minNumberInRotateArray(self, rotateArray):
+        if not rotateArray:
+            return 0
+        if len(rotateArray)==2:
+            return rotateArray[1]
+
+        mid = int(len(rotateArray)/2)
+        if rotateArray[mid] > rotateArray[0]:
+            return self.minNumberInRotateArray(rotateArray[mid:])
+        elif rotateArray[mid] < rotateArray[0]:
+            return self.minNumberInRotateArray(rotateArray[:mid+1])
+        else:
+            for i in range(1,len(rotateArray)):
+                if rotateArray[i] < rotateArray[0]:
+                    return rotateArray[i]
+            return rotateArray[0]
