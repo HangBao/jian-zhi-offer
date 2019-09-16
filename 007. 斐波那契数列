@@ -1,0 +1,26 @@
+# 方法一:
+class Solution:
+    def Fibonacci(self, n):
+        if n==0:
+            return 0
+        elif n==1:
+            return 1
+        else:
+            a,b = 0,1
+            while n>1:
+                a,b = b,a+b
+                n -= 1
+            return b
+            
+# 方法二: 递归法
+class Solution:
+    def Fibonacci(self, n):
+        if n == 0 :
+            return 0
+        elif n == 1 :
+            return 1
+        else :
+            dp = [0,1]
+            while n >= len(dp) :
+                dp.append(dp[-1]+dp[-2])
+            return dp[-1]
