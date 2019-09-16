@@ -1,0 +1,7 @@
+class Solution:
+    def jumpFloorII(self, number):
+        # write mcode here
+        if number==1:
+            return 1
+        else: 
+            return 2*self.jumpFloorII(number-1)
