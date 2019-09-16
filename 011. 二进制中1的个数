@@ -1,0 +1,30 @@
+# 方法一:python自带bin()函数
+class Solution:
+    def NumberOf1(self, n):
+        cnt = 0
+        if n < 0:
+            n = n & 0xffffffff
+        return bin(n).count('1')
+        
+# 方法二:
+class Solution:
+    def NumberOf1(self, n):
+        count = 0
+        index = 1
+        for i in range(32):
+            if n & index :
+                count += 1
+            index<<=1
+        return count
+
+# 方法三:
+class Solution:
+    def NumberOf1(self, n):
+        cnt = 0
+        if n < 0:
+            n = n & 0xffffffff
+        while n:
+            n =  n & (n - 1)
+            cnt += 1
+        return cnt
+
