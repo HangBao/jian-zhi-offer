@@ -1,0 +1,25 @@
+# -*- coding:utf-8 -*-
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+class Solution:
+    def HasSubtree(self, pRoot1, pRoot2):
+        result = False
+        if pRoot1 and pRoot2 :
+            if pRoot1.val == pRoot2.val :
+                result = self.IsSubtree(pRoot1,pRoot2)
+            if not result :
+                result = self.HasSubtree(pRoot1.left,pRoot2)
+            if not result :
+                result = self.HasSubtree(pRoot1.right,pRoot2)
+        return result
+    def IsSubtree(self,pRoot_1,pRoot_2):
+        if not pRoot_2 :
+            return True
+        if not pRoot_1 :
+            return False
+        if pRoot_1.val != pRoot_2.val :
+            return False
+        return self.IsSubtree(pRoot_1.left,pRoot_2.left) and self.IsSubtree(pRoot_1.right,pRoot_2.right)
