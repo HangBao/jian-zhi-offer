@@ -1,0 +1,17 @@
+# 方法一：迭代法
+class Solution:
+    # 返回ListNode
+    def ReverseList(self, pHead):
+        if pHead is None or pHead.next is None :
+            return pHead
+        cur = pHead
+        pre = None
+        tem = None
+        while cur :
+            tem = cur.next
+            cur.next = pre
+            pre = cur
+            cur = tem
+        return pre
+
+# 方法二：递归法
