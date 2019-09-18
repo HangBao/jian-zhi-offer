@@ -5,18 +5,19 @@
 #         self.left = None
 #         self.right = None
 class Solution:
+    # 返回二维列表，内部每个列表表示找到的路径
     def __init__(self):
-        self.onePath = []
-        self.PathArray = []
+        self.curpath = []
+        self.result = []
     def FindPath(self, root, expectNumber):
-        if root is None:
-            return self.PathArray
-        self.onePath.append(root.val)
+        if not root :
+            return self.result
+        self.curpath.append(root.val)
         expectNumber -= root.val
-        if expectNumber==0 and not root.left and not root.right:
-            self.PathArray.append(self.onePath[:])
-        elif expectNumber>0:
+        if expectNumber == 0 and not root.left and not root.right :
+            self.result.append(self.curpath[:])
+        elif expectNumber > 0 :
             self.FindPath(root.left,expectNumber)
             self.FindPath(root.right,expectNumber)
-        self.onePath.pop()
-        return self.PathArray
+        self.curpath.pop()
+        return self.result
