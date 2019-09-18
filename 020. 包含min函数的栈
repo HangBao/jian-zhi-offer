@@ -1,33 +1,29 @@
 # 包含min函数的栈（Python）
+# -*- coding:utf-8 -*-
 class Solution:
     def __init__(self):
-        self.main_stack = []
-        # 辅助栈，每次次最小的元素压入辅助栈
-        self.assist_stack = []
-        # 记录栈中的最小元素
-        self._min = None
-    
-    def min(self):
-        return self._min
-    
-    def push(self, data):
-        self.main_stack.append(data)
-        if self._min is None:
-            self._min = data
-        else:
-            if data < self._min:
-                self._min = data
-        # 将最小的元素压入辅助栈
-        self.assist_stack.append(self._min)
-    
+        self.stack = []
+        self.minstack = []
+        self.minm = float('inf')
+    def push(self, node):
+        # write code here
+        if node < self.minm:
+            self.minm = node
+            self.minstack.append(self.minm)
+        self.stack.append(node)
     def pop(self):
-        if len(self.main_stack) == 0:
-            raise Exception('no data')
-        elif len(self.main_stack) == 1:
-            self.assist_stack.pop()
-            self._min = None
-            return self.main_stack.pop()
+        # write code here
+        if self.stack != []:
+            if self.stack[-1] == self.minm:
+                self.minstack.pop()
+            self.stack.pop(-1)
+    def top(self):
+        # write code here
+        if self.stack != []:
+            return self.stack[-1]
         else:
-            self.assist_stack.pop()
-            self._min = self.assist_stack[-1]
-            return self.main_stack.pop()
+            return None
+    def min(self):
+        # write code here
+        return self.minstack[-1]
+
