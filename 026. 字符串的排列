@@ -1,0 +1,11 @@
+# -*- coding:utf-8 -*-
+class Solution:
+    def Permutation(self, ss):
+        res = []
+        if len(ss) <= 1:
+            return ss
+        for i in range(len(ss)):
+            for j in map(lambda x: ss[i]+x, self.Permutation(ss[:i]+ss[i+1:])):
+                if j not in res:
+                    res.append(j)
+        return sorted(res)
