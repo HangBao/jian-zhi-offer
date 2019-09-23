@@ -1,0 +1,21 @@
+# 方法一：
+# -*- coding:utf-8 -*-
+class Solution:
+    def GetLeastNumbers_Solution(self, tinput, k):
+        if k > len(tinput):
+            return []
+        tinput.sort()
+        result = tinput[:k]
+        return result
+
+#方法二 ：
+# -*- coding:utf-8 -*-
+class Solution:
+    def GetLeastNumbers_Solution(self, tinput, k):
+        if k > len(tinput):
+            return []
+        for i in range(k):
+            for j in range(i+1,len(tinput)):
+                if tinput[i] > tinput[j]:
+                    tinput[i],tinput[j] = tinput[j],tinput[i]
+        return tinput[:k]
