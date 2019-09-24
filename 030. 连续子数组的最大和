@@ -1,0 +1,23 @@
+# 方法一 :
+# -*- coding:utf-8 -*-
+class Solution:
+    def FindGreatestSumOfSubArray(self, array):
+        max_sum = array[0]
+        current_sum = array[0]
+        for i in array[1:]:
+            if current_sum >= 0 :
+                current_sum+=i
+            else :
+                current_sum = i
+            if current_sum > max_sum:
+                max_sum = current_sum
+        return max_sum
+        
+# 方法二：动态规划
+# -*- coding:utf-8 -*-
+class Solution:
+    def FindGreatestSumOfSubArray(self, array):
+        dp = [i for i in array]
+        for i in range(1,len(array)):
+            dp[i] = max(dp[i-1]+array[i],array[i])
+        return max(dp)
