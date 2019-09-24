@@ -1,0 +1,28 @@
+# 方法一 ：
+# -*- coding:utf-8 -*-
+class Solution:
+    def NumberOf1Between1AndN_Solution(self, n):
+        count = 0
+        for i in range(n+1):
+            count += str(i).count('1')
+        return count
+       
+# 方法二 ：https://blog.csdn.net/yi_Afly/article/details/52012593(精彩）
+# -*- coding:utf-8 -*-
+class Solution:
+    def NumberOf1Between1AndN_Solution(self, n):
+        if n < 1 :
+            return 0
+        count = 0
+        base = 1
+        round_ = n
+        while round_ > 0 :
+            weight = round_%10
+            round_//=10
+            count += round_*base
+            if weight == 1 :
+                count += (n%base)+1
+            elif weight > 1 :
+                count += base
+            base*=10
+        return count
