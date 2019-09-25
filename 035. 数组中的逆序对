@@ -1,0 +1,22 @@
+# 方法一：
+# -*- coding:utf-8 -*-
+class Solution:
+    def InversePairs(self, data):
+        count = 0
+        for i in range(len(data)):
+            for j in range(i,len(data)):
+                if data[i] > data[j]:
+                    count +=1
+        return count%1000000007
+ 
+ # 方法二：
+ # -*- coding:utf-8 -*-
+class Solution:
+    def InversePairs(self, data):
+        sortData = sorted(data)
+        count = 0
+        for i in sortData:
+            pos = data.index(i)
+            count += pos
+            data.pop(pos)
+        return count
