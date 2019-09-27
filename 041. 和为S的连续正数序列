@@ -1,0 +1,17 @@
+# -*- coding:utf-8 -*-
+class Solution:
+    def FindContinuousSequence(self, tsum):
+        left = 1
+        right = 2
+        sums = 3
+        result = []
+        while left < right :
+            if sums > tsum :
+                sums -= left
+                left += 1
+            else:
+                if sums == tsum :
+                    result.append([i for i in range(left,right+1)])
+                right += 1
+                sums += right
+        return result
