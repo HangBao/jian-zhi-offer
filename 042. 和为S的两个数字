@@ -1,0 +1,28 @@
+# 方法一 ：
+# -*- coding:utf-8 -*-
+class Solution:
+    def FindNumbersWithSum(self, array, tsum):
+        result = float('inf')
+        for i in array :
+            if (tsum-i) in array :
+                m = i *(tsum-i)
+                if m < result :
+                    result = m
+                    return [i,tsum-i]
+        return []
+
+# 方法二：
+# -*- coding:utf-8 -*-
+class Solution:
+    def FindNumbersWithSum(self, array, tsum):
+        left = 0
+        right = len(array)-1
+        while left < right :
+            sums = array[left] + array[right]
+            if sums > tsum :
+                right -= 1 
+            elif sums < tsum :
+                left += 1
+            else :
+                return [array[left],array[right]]
+        return []
