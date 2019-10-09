@@ -1,0 +1,10 @@
+# -*- coding:utf-8 -*-
+class Solution:
+    def LeftRotateString(self, s, n):
+        if not s :
+            return ''
+        rol = n % len(s)
+        left = s[rol:]
+        right = s[:rol]
+        result = left + right
+        return result
