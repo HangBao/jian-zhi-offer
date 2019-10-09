@@ -1,0 +1,9 @@
+class Solution:
+    def IsContinuous(self, numbers):
+        # write code here
+        if len(numbers):
+            while min(numbers)==0:
+                numbers.remove(0)
+            if max(numbers) - min(numbers)<5 and len(numbers)==len(set(numbers)):
+                return True
+        return False
