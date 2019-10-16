@@ -1,0 +1,9 @@
+# -*- coding:utf-8 -*-
+class Solution:
+    def multiply(self, A):
+        B=[i for i in range(len(A))]
+        for i in B:
+            B[i]=1  # 将B中的元素每次初始化为1
+            for j in (A[:i]+A[i+1:]):  # 遍历A中除了i以外的所有元素
+                B[i]*=j
+        return B
