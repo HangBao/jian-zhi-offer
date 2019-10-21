@@ -1,0 +1,31 @@
+#1.有右子树——则下一个结点是右子树的最左结点。
+#2.没有右子树，但是有父节点——则向上找到一个父节点，使得给定节点所在子树，是该父节点的左子树。
+#3.若不满足以上两种情况，则返回None。
+
+# -*- coding:utf-8 -*-
+# class TreeLinkNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+#         self.next = None
+class Solution:
+    def GetNext(self, pNode):
+        # write code here
+        if not pNode:
+            return None
+        if not pNode.left and not pNode.right and not pNode.next:
+            return None
+        # 是否有右孩子
+        if pNode.right:
+            res = pNode.right
+            while res.left:
+                res = res.left
+            return res
+        # 如果没有右孩子但是有父节点
+        while pNode.next:
+            father = pNode.next
+            if father.left == pNode:
+                return father
+            pNode = father
+        return None
