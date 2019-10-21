@@ -1,0 +1,13 @@
+# -*- coding:utf-8 -*-
+class Solution:
+    charDict = {}
+    s = ""
+    def FirstAppearingOnce(self):
+        for key in self.s:
+            if self.charDict[key] == 1:
+                return key
+        return '#'
+
+    def Insert(self, char):
+        self.charDict[char] = 1 if char not in self.charDict else self.charDict[char]+1
+        self.s += char
