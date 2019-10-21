@@ -1,0 +1,17 @@
+import math
+import heapq
+# -*- coding:utf-8 -*-
+class Solution:
+    def __init__(self):
+        self.data=[]
+    def Insert(self, num):
+        # write code here
+        self.data.append(num)
+        self.data.sort()
+    def GetMedian(self,data):
+        # write code here
+        l = len(self.data)
+        if l%2==0:
+            return (self.data[l//2]+self.data[l//2-1])/2.0
+        else:
+            return self.data[l//2]
